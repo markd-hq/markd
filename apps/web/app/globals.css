@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Markd brand: forest green, gold, cream. Trust first, loud second. */
+@theme {
+  --font-sans: "Alexandria Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-forest-950: #062a20;
+  --color-forest-900: #0b3d2e;
+  --color-forest-700: #14674c;
+  --color-forest-100: #d6e4db;
+  --color-gold-400: #f2b544;
+  --color-gold-500: #e3a22b;
+  --color-cream-50: #fbf7ee;
+  --color-cream-100: #f3ecdc;
+  --color-ink: #10231a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream-50);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  min-width: 320px;
 }
+h1, h2, h3 { letter-spacing: -0.02em; font-weight: 700; }
+::selection { background: var(--color-gold-400); color: #062a20; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #e3a22b; outline-offset: 3px; }
+.toast-enter { animation: toast-enter 180ms ease-out both; }
+@keyframes toast-enter {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { .toast-enter { animation: none; } }
